@@ -18,49 +18,51 @@ class CreditCard:
         self._limit = limit
         self._balance = 0
 
-        def get_customer(self):
-            """Return name of the customer"""
-            return self._customer
+
+    def get_customer(self):
+        """Return name of the customer"""
+        return self._customer
         
-        def get_bank(self):
-            """Return the name of the bank"""
-            return self._bank
+    def get_bank(self):
+        """Return the name of the bank"""
+        return self._bank
         
-        def get_acnt(self):
-            """Return the account identifier"""
-            return self._acnt
+    def get_acnt(self):
+        """Return the account identifier"""
+        return self._acnt
         
-        def get_limit(self):
-            """Return the account limit"""
-            return self._limit
+    def get_limit(self):
+        """Return the account limit"""
+        return self._limit
         
-        def get_balance(self):
-            """Return the account balance"""
-            return self._balance
+    def get_balance(self):
+        """Return the account balance"""
+        return self._balance
         
-        def charged(self, price):
-            """Charge given price to the card, assuming sufficient credit limit
+    def charge(self, price):
+        """Charge given price to the card, assuming sufficient credit limit
             
-            Return True if charge was processed. False if charge was denied.
-            """
-            if price + self._balance > self._limit:
-                return False
-            self._balance -= price
-            return True
+        Return True if charge was processed. False if charge was denied.
+        """
+        if price + self._balance > self._limit:
+            return False
+        self._balance += price
+        return True
         
-        def make_paymnt(self,amount):
-            """Process customer payment that reduces balance."""
-            self._balance -= amount
+    def make_payment(self,amount):
+        """Process customer payment that reduces balance."""
+        self._balance -= amount
+
         
 
 if __name__ == "__main__":
     wallet = []
     wallet.append(CreditCard( 'John Bowman' , 'California Savings' ,
-                             '5391 0375 9387 5309' , 2500) )
+                             '5391 0375 9387 5309' , 2500,1,2) )
     wallet.append(CreditCard( 'John Bowman' , 'California Federal' , 
-                             '3485 0399 3395 1954' , 3500) )
+                             '3485 0399 3395 1954' , 3500, 3,4) )
     wallet.append(CreditCard( 'John Bowman' , 'California Finance' , 
-                             '5391 0375 9387 5309' , 5000) )
+                             '5391 0375 9387 5309' , 5000, 4,5) )
     for val in range(1,17):
         wallet[0].charge(val)
         wallet[1].charge(2*val)
@@ -75,6 +77,6 @@ if __name__ == "__main__":
             wallet[c].make_payment(100)
             print("New balance =", wallet[c].get_balance())
         print()
-        
+
 
         
