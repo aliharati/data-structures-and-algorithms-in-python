@@ -66,18 +66,30 @@ if __name__ == "__main__":
 
     print(next(x))
     print(next(x))
+    print(next(x))
+    print(next(x))
+    print()
 
     x = ArithmeticProgression()
 
     print(next(x))
     print(next(x))
+    print(next(x))
+    print(next(x))
+    print()
 
     x = GeometricProgression()
 
     print(next(x))
     print(next(x))
+    print(next(x))
+    print(next(x))
+    print()
     
-    x = FibonacciProgression()
+    x = FibonacciProgression(2,3)
 
     print(next(x))
     print(next(x))
+    print(next(x))
+    print(next(x))
+    print()
