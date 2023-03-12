@@ -61,35 +61,15 @@ class FibonacciProgression(Progression):
 
 if __name__ == "__main__":
     
+    print("Default progression: ")
+    Progression().print_progression(10)
 
-    x = Progression()
+    print("Arithmatic progression with increment 5 and start 2: ")
+    ArithmeticProgression(5,2).print_progression(10)
 
-    print(next(x))
-    print(next(x))
-    print(next(x))
-    print(next(x))
-    print()
+    print("Geometric progression with default base")
+    GeometricProgression().print_progression(10)
 
-    x = ArithmeticProgression()
+    print("Fibonacci progression with default starting values")
+    FibonacciProgression().print_progression(10)
 
-    print(next(x))
-    print(next(x))
-    print(next(x))
-    print(next(x))
-    print()
-
-    x = GeometricProgression()
-
-    print(next(x))
-    print(next(x))
-    print(next(x))
-    print(next(x))
-    print()
-    
-    x = FibonacciProgression(2,3)
-
-    print(next(x))
-    print(next(x))
-    print(next(x))
-    print(next(x))
-    print()
