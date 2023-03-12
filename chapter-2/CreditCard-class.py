@@ -53,16 +53,37 @@ class CreditCard:
         """Process customer payment that reduces balance."""
         self._balance -= amount
 
+
+
+class PredatoryCreditCard(CreditCard):
+
+
+    def __init__(self, customer, bank, acnt, limit, apr):
+        super().__init__(customer, bank, acnt, limit)
+        self._apr = apr
+
+    def charge(self, price):
+        
+        success = super().charge(price)
+        if not success:
+            self._balance += 5
+        return success
+    def process_month(self):
+        if self._balance > 0:
+            monthly_factor = (1 + self._apr) ** (1/12)
+            self._balance *= monthly_factor
+
+    
         
 
 if __name__ == "__main__":
     wallet = []
     wallet.append(CreditCard( 'John Bowman' , 'California Savings' ,
-                             '5391 0375 9387 5309' , 2500,1,2) )
+                             '5391 0375 9387 5309' , 2500) )
     wallet.append(CreditCard( 'John Bowman' , 'California Federal' , 
-                             '3485 0399 3395 1954' , 3500, 3,4) )
+                             '3485 0399 3395 1954' , 3500) )
     wallet.append(CreditCard( 'John Bowman' , 'California Finance' , 
-                             '5391 0375 9387 5309' , 5000, 4,5) )
+                             '5391 0375 9387 5309' , 5000) )
     for val in range(1,17):
         wallet[0].charge(val)
         wallet[1].charge(2*val)
@@ -77,6 +98,9 @@ if __name__ == "__main__":
             wallet[c].make_payment(100)
             print("New balance =", wallet[c].get_balance())
         print()
+
+
+
 
 
         
