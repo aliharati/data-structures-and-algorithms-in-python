@@ -12,7 +12,10 @@ class Range:
         self._stop = stop
         self._step = step
         
-        self._length = max(0,(stop - start + step - 1) // step)
+        if step > 0:
+            self._length = max(0,(stop - start + step - 1) // step)
+        else:
+            self._length = max(0,(stop - start + step + 1) // step)  #correction
 
     def __len__(self):
         return self._length
@@ -28,7 +31,12 @@ class Range:
 
 if __name__ == '__main__':
 
-    x = Range(-10,5,2)
+    x = Range(-10,1,2)
     print(len(x))
-    print(len(range(-10,5,-2)))
-    print(x[1])
+    print(len(range(-10,1,2)))
+    print(x[5])
+
+    s = Range(1,-10,-3)
+    print(len(s))
+    print(len(range(1,-10,-3)))
+    print(s[4])
