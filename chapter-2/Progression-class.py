@@ -24,7 +24,7 @@ class Progression:
     
     def print_progression(self, n):
 
-        print(''.join(str(next(self)) for i in range(n)))
+        print(' '.join(str(next(self)) for i in range(n)))
         
 
 class ArithmeticProgression(Progression):
